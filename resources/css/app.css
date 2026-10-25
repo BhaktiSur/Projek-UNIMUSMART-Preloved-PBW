@@ -7,3 +7,16 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+body {
+    background-color: #f3f4f6 !important;
+}
+
+.site-header {
+    background-color: #173d32 !important;
+    color: white !important;
+    padding: 20px !important;
+}
+
+.site-header a {
+    color: white !important;
+}

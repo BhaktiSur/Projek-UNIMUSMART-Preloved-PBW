@@ -498,4 +498,150 @@ form > a {
 .how-it-works p {
     margin-bottom: 0;
 }
+/* ==================================================
+   8. KATALOG DAN PENCARIAN
+   ================================================== */
+
+.catalog-page form {
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) 220px auto auto;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 0;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #ffffff;
+}
+
+.catalog-page form button {
+    white-space: nowrap;
+}
+
+.catalog-page form > a {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+}
+
+.catalog-page .product-grid {
+    margin-top: 24px;
+}
+
+
+/* ==================================================
+   9. DETAIL BARANG
+   ================================================== */
+
+.product-detail-page {
+    min-height: 65vh;
+}
+
+.product-detail-page .container > p:first-child {
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.product-detail {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 42px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: var(--shadow);
+}
+
+.product-detail-image img {
+    width: 100%;
+    max-height: 520px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #edf0ed;
+}
+
+.product-detail-info > p:first-child {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.product-detail-info h1 {
+    margin: 14px 0;
+    font-size: clamp(25px, 3vw, 36px);
+}
+
+.product-detail-info h2 {
+    margin-bottom: 22px;
+    color: var(--primary);
+    font-size: 27px;
+}
+
+.product-detail-info h3 {
+    margin-top: 26px;
+}
+
+.product-detail-info a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 8px 0 0;
+    padding: 12px 16px;
+    border-radius: 9px;
+    background: var(--primary);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.product-detail-info a:last-child {
+    border: 1px solid var(--border);
+    background: #ffffff;
+    color: var(--primary);
+}
+
+
+/* ==================================================
+   10. JUAL BARANG
+   ================================================== */
+
+.sell-page {
+    min-height: 70vh;
+}
+
+.sell-page .container {
+    max-width: 800px;
+}
+
+.sell-page .container > h1,
+.sell-page .container > p {
+    text-align: center;
+}
+
+.sell-page form {
+    margin-top: 32px;
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: var(--shadow);
+}
+
+.sell-page input[type="file"] {
+    display: block;
+    padding: 10px;
+    background: #ffffff;
+}
+
+.sell-page form > p {
+    margin-top: 18px;
+    font-size: 13px;
+}
 

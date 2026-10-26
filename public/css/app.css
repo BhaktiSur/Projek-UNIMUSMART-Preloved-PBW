@@ -943,3 +943,202 @@ form > a {
     color: #bde6c9;
 }
 
+/* ==================================================
+   16. RESPONSIVE TABLET
+   ================================================== */
+
+@media (max-width: 1024px) {
+    .site-header .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-block: 18px;
+    }
+
+    .navbar {
+        gap: 14px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .catalog-page form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .how-it-works .container > div {
+        width: calc(33.333% - 12px);
+        padding: 18px;
+    }
+}
+
+
+/* ==================================================
+   17. RESPONSIVE MOBILE
+   ================================================== */
+
+@media (max-width: 700px) {
+    body {
+        font-size: 15px;
+    }
+
+    .container {
+        width: calc(100% - 28px);
+    }
+
+    section {
+        padding-block: 36px;
+    }
+
+    .site-header .container {
+        align-items: center;
+        gap: 14px;
+    }
+
+    .site-header .logo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar {
+        width: 100%;
+        gap: 10px 16px;
+    }
+
+    .navbar a {
+        font-size: 13px;
+    }
+
+    .hero {
+        padding: 48px 0;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .hero form {
+        flex-direction: column;
+    }
+
+    .hero form button {
+        width: 100%;
+    }
+
+    .category-list {
+        gap: 8px;
+    }
+
+    .category-list a {
+        padding: 9px 13px;
+        font-size: 13px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .product-card > a:first-child {
+        padding: 8px 8px 0;
+    }
+
+    .product-card h2,
+    .product-card h3 {
+        font-size: 15px;
+    }
+
+    .product-card > a:first-child p:nth-of-type(2) {
+        font-size: 16px;
+    }
+
+    .product-card > a:last-child {
+        margin: 8px;
+        padding: 9px 6px;
+        font-size: 13px;
+    }
+
+    .catalog-page form {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .catalog-page form button {
+        width: 100%;
+    }
+
+    .product-detail {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 18px;
+    }
+
+    .product-detail-image img {
+        max-height: 360px;
+    }
+
+    .product-detail-info a {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .how-it-works .container > div {
+        display: block;
+        width: 100%;
+        margin: 14px 0 0;
+    }
+
+    .sell-page form,
+    .auth-card {
+        padding: 22px;
+    }
+
+    .profile-information,
+    .profile-statistics,
+    .my-products,
+    .my-transactions,
+    .transaction-summary,
+    .payment-method {
+        padding: 20px;
+    }
+
+    .profile-statistics {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-statistics h2 {
+        grid-column: auto;
+    }
+
+    .transaction-summary p {
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .help-section {
+        padding: 20px;
+    }
+
+    .site-footer {
+        padding: 28px 0;
+    }
+}
+
+
+/* ==================================================
+   18. RESPONSIVE HP KECIL
+   ================================================== */
+
+@media (max-width: 380px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        justify-content: center;
+    }
+
+    .auth-card {
+        padding: 18px;
+    }
+}

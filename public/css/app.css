@@ -645,3 +645,203 @@ form > a {
     font-size: 13px;
 }
 
+/* ==================================================
+   11. LOGIN DAN REGISTRASI
+   ================================================== */
+
+.auth-page {
+    display: flex;
+    min-height: 75vh;
+    align-items: center;
+    justify-content: center;
+    background: var(--background);
+}
+
+.auth-page .container {
+    display: flex;
+    justify-content: center;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+    padding: 36px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: var(--shadow);
+}
+
+.auth-card h1 {
+    margin-bottom: 12px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.auth-card > p {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.auth-card form {
+    margin-top: 24px;
+}
+
+.auth-card form button {
+    width: 100%;
+    margin-top: 6px;
+}
+
+.auth-card form + p {
+    margin-top: 24px;
+    margin-bottom: 10px;
+}
+
+.auth-card > p:last-child {
+    margin-bottom: 0;
+}
+
+.auth-card a {
+    font-weight: 700;
+}
+
+
+/* ==================================================
+   12. PROFIL DAN DASHBOARD
+   ================================================== */
+
+.profile-page {
+    min-height: 70vh;
+}
+
+.profile-page .container > h1 {
+    margin-bottom: 28px;
+}
+
+.profile-information,
+.profile-statistics,
+.my-products,
+.my-transactions {
+    margin-bottom: 24px;
+    padding: 26px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #ffffff;
+    box-shadow: var(--shadow);
+}
+
+.profile-information h2,
+.profile-statistics h2,
+.my-products h2,
+.my-transactions h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.profile-information a,
+.my-products a,
+.my-transactions a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.profile-statistics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.profile-statistics h2 {
+    grid-column: 1 / -1;
+}
+
+.profile-statistics > div {
+    padding: 22px;
+    border-radius: 12px;
+    background: var(--primary-light);
+    text-align: center;
+}
+
+.profile-statistics h3 {
+    margin-bottom: 6px;
+    color: var(--primary);
+    font-size: 30px;
+}
+
+.profile-statistics p {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+/* ==================================================
+   13. TRANSAKSI DAN METODE PEMBAYARAN
+   ================================================== */
+
+.transaction-page {
+    min-height: 70vh;
+}
+
+.transaction-page .container {
+    max-width: 850px;
+}
+
+.transaction-page .container > h1,
+.transaction-page .container > p {
+    text-align: center;
+}
+
+.transaction-summary,
+.payment-method {
+    margin-top: 28px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #ffffff;
+    box-shadow: var(--shadow);
+}
+
+.transaction-summary h2,
+.payment-method h2 {
+    margin-bottom: 22px;
+    font-size: 23px;
+}
+
+.transaction-summary p {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.transaction-summary p:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.payment-method .form-group {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.payment-method .form-group p {
+    margin: 8px 0 0;
+    font-size: 14px;
+}
+
+.payment-method .form-group textarea {
+    margin-top: 8px;
+}
+
+.payment-method form > p {
+    font-size: 13px;
+}
+

@@ -12,7 +12,7 @@ Route::view('/register', 'register');
 
 Route::get('/katalog', [BarangController::class, 'katalog']);
 
-Route::get('/detailbarang/{id}', [BarangController::class, 'detail']);
+Route::get('/detailbarang/{id}', [BarangController::class, 'detail'])->name('barang.detail');
 
 Route::view('/jual', 'jual');
 Route::view('/profil', 'profil');

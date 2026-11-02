@@ -17,8 +17,7 @@
                 type="search"
                 name="q"
                 placeholder="Cari buku, laptop, pakaian, dan lainnya..."
-                aria-label="Cari barang"
-            >
+                aria-label="Cari barang">
 
             <button type="submit">Cari Barang</button>
         </form>
@@ -61,71 +60,61 @@
 
         <p>Beberapa barang preloved yang bisa kamu temukan.</p>
 
-        @php
-            $products = [
-                [
-                    'id' => 1,
-                    'nama' => 'Buku Pemrograman C++',
-                    'harga' => 45000,
-                    'kategori' => 'Buku',
-                    'kondisi' => 'Bekas - Sangat Baik',
-                    'penjual' => 'Mahasiswa TI',
-                    'gambar' => 'https://placehold.co/400x300?text=Buku+C%2B%2B'
-                ],
-                [
-                    'id' => 2,
-                    'nama' => 'Tas Kuliah',
-                    'harga' => 75000,
-                    'kategori' => 'Aksesori',
-                    'kondisi' => 'Bekas - Baik',
-                    'penjual' => 'Mahasiswa UNIMUS',
-                    'gambar' => 'https://placehold.co/400x300?text=Tas+Kuliah'
-                ],
-                [
-                    'id' => 3,
-                    'nama' => 'Mouse Wireless',
-                    'harga' => 50000,
-                    'kategori' => 'Elektronik',
-                    'kondisi' => 'Bekas - Sangat Baik',
-                    'penjual' => 'Mahasiswa TI',
-                    'gambar' => 'https://placehold.co/400x300?text=Mouse'
-                ],
-                [
-                    'id' => 4,
-                    'nama' => 'Jaket',
-                    'harga' => 60000,
-                    'kategori' => 'Pakaian',
-                    'kondisi' => 'Bekas - Baik',
-                    'penjual' => 'Mahasiswa UNIMUS',
-                    'gambar' => 'https://placehold.co/400x300?text=Jaket'
-                ],
-            ];
-        @endphp
+        <div class="product-grid">
+            @forelse ($products as $product)
+            <article class="product-card">
+
+                <a href="{{ route('barang.detail', $product->id) }}">
+                    <img
+                        src="{{ $product->gambar
+                        ? asset('storage/' . $product->gambar)
+                        : 'https://placehold.co/400x300?text=Foto+Belum+Tersedia' }}"
+                        alt="{{ $product->nama }}">
+
+                    <p>{{ $product->kategori }}</p>
+
+                    <h3>{{ $product->nama }}</h3>
+
+                    <p>
+                        Rp{{ number_format($product->harga, 0, ',', '.') }}
+                    </p>
+
+                    <p>{{ $product->kondisi }}</p>
+                </a>
+
+                <a href="{{ route('barang.detail', $product->id) }}">
+                    Lihat Detail
+                </a>
+
+            </article>
+            @empty
+            <p>Belum ada barang yang tersedia saat ini.</p>
+            @endforelse
+        </div>
 
         <div class="product-grid">
             @foreach ($products as $product)
-                <article class="product-card">
-                    <a href="{{ url('/detailbarang') }}?id={{ $product['id'] }}">
-                        <img
-                            src="{{ $product['gambar'] }}"
-                            alt="{{ $product['nama'] }}"
-                        >
+            <article class="product-card">
+                <a href="{{ route('barang.detail', $product->id) }}">
+                    <img
+                        src="{{ $product->gambar }}"
+                        alt="{{ $product->nama }}">
 
-                        <p>{{ $product['kategori'] }}</p>
+                    <p>{{ $product->kategori }}</p>
 
-                        <h3>{{ $product['nama'] }}</h3>
+                    <h3>{{ $product->nama }}</h3>
 
-                        <p>
-                            Rp{{ number_format($product['harga'], 0, ',', '.') }}
-                        </p>
+                    <p>
+                        Rp{{ number_format($product->harga, 0, ',', '.') }}
+                    </p>
 
-                        <p>{{ $product['kondisi'] }}</p>
-                    </a>
+                    <p>{{ $product->kondisi }}</p>
+                </a>
 
-                    <a href="{{ url('/detailbarang') }}?id={{ $product['id'] }}">
-                        Lihat Detail
-                    </a>
-                </article>
+                <a href="{{ route('barang.detail', $product->id) }}">
+                    Lihat Detail
+                </a>
+            </article>
             @endforeach
         </div>
 

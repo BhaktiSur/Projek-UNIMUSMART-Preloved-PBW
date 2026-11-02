@@ -1,14 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BarangController;
 Route::redirect('/', '/index');
 
 Route::view('/index', 'index');
 Route::view('/login', 'login');
 Route::view('/register', 'register');
 
-Route::view('/katalog', 'katalog');
+Route::get('/katalog', [BarangController::class, 'katalog']);
+
 Route::view('/detailbarang', 'detailbarang');
 Route::view('/jual', 'jual');
 

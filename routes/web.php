@@ -10,9 +10,11 @@ Route::get('/index', [BarangController::class, 'beranda']);
 Route::view('/login', 'login');
 Route::view('/register', 'register');
 
-Route::get('/katalog', [BarangController::class, 'katalog']);
+Route::get('/katalog', [BarangController::class, 'katalog'])
+    ->name('barang.katalog');
 
-Route::get('/detailbarang/{id}', [BarangController::class, 'detail'])->name('barang.detail');
+Route::get('/detailbarang/{id}', [BarangController::class, 'detail'])
+    ->name('barang.detail');
 
 Route::view('/jual', 'jual');
 Route::view('/profil', 'profil');

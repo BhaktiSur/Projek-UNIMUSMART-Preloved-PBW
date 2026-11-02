@@ -19,9 +19,7 @@ class BarangController extends Controller
     public function katalog()
     {
         $products = Barang::all();
-        return view('katalog', [
-            'products' => $products
-        ]);
+        return view('katalog', compact('products'));
     }
 
     public function detail($id)

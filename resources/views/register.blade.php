@@ -12,14 +12,30 @@
                 Bergabunglah dengan komunitas jual beli preloved UNIMUS.
             </p>
 
-            <form action="{{ url('/register') }}" method="GET">
+            {{-- Pesan error --}}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ url('/register') }}" method="POST">
+
+                {{-- Keamanan form Laravel --}}
+                @csrf
+
                 <div class="form-group">
                     <label for="nama">Nama Lengkap</label>
 
                     <input
                         type="text"
                         id="nama"
-                        name="nama"
+                        name="name"
+                        value="{{ old('name') }}"
                         placeholder="Masukkan nama lengkap"
                         autocomplete="name"
                         required
@@ -33,6 +49,7 @@
                         type="email"
                         id="email"
                         name="email"
+                        value="{{ old('email') }}"
                         placeholder="Masukkan email"
                         autocomplete="email"
                         required
@@ -60,19 +77,14 @@
                     <input
                         type="password"
                         id="konfirmasi_password"
-                        name="konfirmasi_password"
+                        name="password_confirmation"
                         placeholder="Ulangi kata sandi"
                         autocomplete="new-password"
                         required
                     >
                 </div>
 
-                <p>
-                    Pendaftaran belum aktif karena autentikasi
-                    dan database belum dibuat.
-                </p>
-
-                <button type="button">Daftar</button>
+                <button type="submit">Daftar</button>
             </form>
 
             <p>

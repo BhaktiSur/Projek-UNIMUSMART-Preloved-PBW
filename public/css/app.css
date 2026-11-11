@@ -1148,14 +1148,12 @@ form > a {
    19. EFEK HOVER NAVBAR
    ================================================== */
 
-/* Kondisi normal: perubahan dibuat halus */
 .navbar a,
 .site-header .container > a:last-child {
   position: relative;
   transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
 }
 
-/* Saat kursor di atas menu: warna berubah, naik sedikit, ada glow */
 .navbar a:hover,
 .site-header .container > a:last-child:hover {
   color: #a7f3d0;
@@ -1163,7 +1161,6 @@ form > a {
   text-shadow: 0 0 10px rgba(167, 243, 208, 0.7);
 }
 
-/* Garis bawah (awalnya lebar 0, jadi tidak terlihat) */
 .navbar a::after {
   content: "";
   position: absolute;
@@ -1175,8 +1172,93 @@ form > a {
   transition: width 0.3s ease, left 0.3s ease;
 }
 
-/* Garis bawah melebar dari tengah saat kursor di atas menu */
 .navbar a:hover::after {
   width: 100%;
   left: 0;
+}
+
+
+/* ==================================================
+   20. MENU NAVBAR AKTIF
+   ================================================== */
+
+.navbar a.active {
+  color: #a7f3d0;
+  font-weight: 700;
+}
+
+.navbar a.active::after {
+  width: 100%;
+  left: 0;
+}
+
+
+/* ==================================================
+   21. EFEK TAMBAHAN KARTU, TOMBOL, DAN KATEGORI
+   ================================================== */
+
+.product-card img {
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+button,
+.button,
+input[type="submit"] {
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover,
+.button:hover,
+input[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(23, 76, 59, 0.25);
+}
+
+.category-list a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(21, 53, 37, 0.12);
+}
+
+
+/* ==================================================
+   22. ANIMASI MUNCUL SAAT HALAMAN DIBUKA
+   ================================================== */
+@keyframes muncul {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero .container,
+.categories .container,
+.featured-products .container,
+.how-it-works .container {
+  animation: muncul 0.6s ease backwards;
+}
+
+.product-card {
+  animation: muncul 0.5s ease backwards;
+}
+.product-card:nth-child(2) { animation-delay: 0.1s; }
+.product-card:nth-child(3) { animation-delay: 0.2s; }
+.product-card:nth-child(4) { animation-delay: 0.3s; }
+
+
+/* ==================================================
+   23. KURANGI GERAKAN (AKSESIBILITAS)
+   ================================================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }

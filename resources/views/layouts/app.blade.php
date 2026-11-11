@@ -20,12 +20,12 @@
             </a>
 
             <nav class="navbar">
-                <a href="{{ url('/index') }}">Beranda</a>
-                <a href="{{ url('/katalog') }}">Katalog</a>
-                <a href="{{ url('/jual') }}">Jual Barang</a>
-                <a href="{{ url('/transaksi') }}">Transaksi</a>
-                <a href="{{ url('/bantuan') }}">Bantuan</a>
-                <a href="{{ url('/profil') }}">Profil Saya</a>
+                <a href="{{ url('/index') }}" class="{{ request()->is('index') ? 'active' : '' }}">Beranda</a>
+                <a href="{{ url('/katalog') }}" class="{{ request()->is('katalog*') ? 'active' : '' }}">Katalog</a>
+                <a href="{{ url('/jual') }}" class="{{ request()->is('jual') ? 'active' : '' }}">Jual Barang</a>
+                <a href="{{ url('/transaksi') }}" class="{{ request()->is('transaksi') ? 'active' : '' }}">Transaksi</a>
+                <a href="{{ url('/bantuan') }}" class="{{ request()->is('bantuan') ? 'active' : '' }}">Bantuan</a>
+                <a href="{{ url('/profil') }}" class="{{ request()->is('profil') ? 'active' : '' }}">Profil Saya</a>
             </nav>
 
             <a href="{{ url('/login') }}">Masuk</a>

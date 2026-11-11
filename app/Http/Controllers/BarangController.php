@@ -26,6 +26,11 @@ class BarangController extends Controller
     {
         $product = Barang::findOrFail($id);
 
-        return view('detailbarang', compact('product'));
+        $related = Barang::where('kategori', $product->kategori)
+        ->where('id', '!=', $product->id)
+            ->latest()
+            ->take(4)
+            ->get();
+        return view('detailbarang', compact('product', 'related'));
     }
 }

@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Detail Barang - Preloved UNIMUS')
+@section('title', $product->nama . ' - Preloved UNIMUS')
 
 @section('content')
 <section class="product-detail-page">
     <div class="container">
 
-        <p>
-            <a href="{{ route('barang.katalog') }}">Katalog</a>
-            / Detail Barang
+        <p class="breadcrumb">
+            <a href="{{ url('/index') }}">Beranda</a>
+            / <a href="{{ route('barang.katalog') }}">Katalog</a>
+            / {{ $product->nama }}
         </p>
 
         <div class="product-detail">
@@ -31,20 +32,24 @@
                     Rp{{ number_format($product->harga, 0, ',', '.') }}
                 </h2>
 
-                <p>
-                    <strong>Kondisi:</strong>
-                    {{ $product->kondisi }}
-                </p>
+                <div class="info-list">
+                    <div>
+                        <span>Kondisi</span>
+                        <strong>{{ $product->kondisi }}</strong>
+                    </div>
 
-                <p>
-                    <strong>Lokasi:</strong>
-                    {{ $product->lokasi }}
-                </p>
+                    <div>
+                        <span>Lokasi</span>
+                        <strong>{{ $product->lokasi }}</strong>
+                    </div>
 
-                <p>
-                    <strong>Status:</strong>
-                    {{ ucfirst($product->status) }}
-                </p>
+                    <div>
+                        <span>Status</span>
+                        <strong class="status-badge status-{{ strtolower($product->status) }}">
+                            {{ ucfirst($product->status) }}
+                        </strong>
+                    </div>
+                </div>
 
                 <h3>Deskripsi Barang</h3>
 
@@ -57,16 +62,61 @@
                         : 'Informasi penjual belum tersedia' }}
                 </p>
 
-                <a href="{{ url('/transaksi') }}?id={{ $product->id }}">
-                    Lanjut ke Transaksi
-                </a>
+                <div class="product-actions">
+                    <button type="button" id="btn-bagikan" class="btn-share">
+                        Bagikan
+                    </button>
 
-                <a href="{{ route('barang.katalog') }}">
-                    Kembali ke Katalog
-                </a>
+                    <a href="{{ url('/transaksi') }}?id={{ $product->id }}">
+                        Lanjut ke Transaksi
+                    </a>
+
+                    <a href="{{ route('barang.katalog') }}">
+                        Kembali ke Katalog
+                    </a>
+                </div>
 
             </div>
         </div>
+
+        @if (isset($related) && $related->count())
+        <div class="related-products">
+            <h2>Barang Terkait</h2>
+
+            <div class="product-grid">
+                @foreach ($related as $item)
+                <article class="product-card">
+                    <a href="{{ route('barang.detail', $item->id) }}">
+                        <img
+                            src="{{ $item->gambar
+                                ? asset('storage/' . $item->gambar)
+                                : 'https://placehold.co/400x300?text=Foto+Belum+Tersedia' }}"
+                            alt="{{ $item->nama }}">
+                         <p>{{ $item->kategori }}</p>
+
+                        <h3>{{ $item->nama }}</h3>
+
+                        <p>Rp{{ number_format($item->harga, 0, ',', '.') }}</p>
+
+                        <p>{{ $item->kondisi }}</p>
+                    </a>
+                    <a href="{{ route('barang.detail', $item->id) }}">
+                        Lihat Detail
+                    </a>
+                </article>
+                @endforeach
+            </div>
+        </div>
+        @endif
     </div>
 </section>
+<script>
+    document.getElementById('btn-bagikan').addEventListener('click', function () {
+        var tombol = this;
+        navigator.clipboard.writeText(window.location.href).then(function () {
+            tombol.textContent = 'Link tersalin!';
+            setTimeout(function () { tombol.textContent = 'Bagikan'; }, 2000);
+        });
+    });
+</script>
 @endsection

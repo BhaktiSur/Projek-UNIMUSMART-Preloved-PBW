@@ -1142,3 +1142,41 @@ form > a {
         padding: 18px;
     }
 }
+
+
+/* ==================================================
+   19. EFEK HOVER NAVBAR
+   ================================================== */
+
+/* Kondisi normal: perubahan dibuat halus */
+.navbar a,
+.site-header .container > a:last-child {
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Saat kursor di atas menu: warna berubah, naik sedikit, ada glow */
+.navbar a:hover,
+.site-header .container > a:last-child:hover {
+  color: #a7f3d0;
+  transform: translateY(-2px);
+  text-shadow: 0 0 10px rgba(167, 243, 208, 0.7);
+}
+
+/* Garis bawah (awalnya lebar 0, jadi tidak terlihat) */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #a7f3d0;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+/* Garis bawah melebar dari tengah saat kursor di atas menu */
+.navbar a:hover::after {
+  width: 100%;
+  left: 0;
+}

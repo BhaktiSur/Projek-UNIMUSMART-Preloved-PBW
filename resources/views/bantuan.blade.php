@@ -12,6 +12,12 @@
             mulai dari mencari barang hingga melakukan transaksi.
         </p>
 
+        @if(session('success'))
+            <div class="alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <section class="help-section">
             <h2>Cara Membeli Barang</h2>
 
@@ -69,6 +75,63 @@
                 pribadi pengguna kepada publik tanpa alasan dan persetujuan
                 yang sesuai.
             </p>
+        </section>
+
+        <section class="help-section report-section" id="lapor-akun">
+            <h2>Pusat Pelaporan Akun</h2>
+            <p class="report-desc">
+                Mengalami kendala dengan penjual atau pembeli yang tidak bertanggung jawab? 
+                Laporkan akun terkait beserta buktinya agar tim admin dapat menindaklanjuti.
+            </p>
+
+            <form action="{{ url('/laporan-akun') }}" method="POST" enctype="multipart/form-data" class="report-form">
+                @csrf
+
+                <div class="form-group">
+                    <label for="peran_pelapor">Saya melaporkan sebagai:</label>
+                    <select name="peran_pelapor" id="peran_pelapor" required>
+                        <option value="">-- Pilih Peran Anda --</option>
+                        <option value="pembeli">Pembeli</option>
+                        <option value="penjual">Penjual</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="akun_terlapor">Username / Nama / NIM Terlapor:</label>
+                    <input type="text" name="akun_terlapor" id="akun_terlapor" placeholder="Contoh: Budi Santoso / C2C023001" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nama_barang">Nama Barang / ID Transaksi (Opsional):</label>
+                    <input type="text" name="nama_barang" id="nama_barang" placeholder="Contoh: Buku Kalkulus Edisi 9">
+                </div>
+
+                <div class="form-group">
+                    <label for="kategori_masalah">Kategori Pelanggaran:</label>
+                    <select name="kategori_masalah" id="kategori_masalah" required>
+                        <option value="">-- Pilih Alasan Pelaporan --</option>
+                        <option value="tidak_kirim">Penjual tidak menyerahkan barang setelah pembayaran</option>
+                        <option value="tidak_sesuai">Kondisi barang sangat tidak sesuai deskripsi</option>
+                        <option value="ghosting_cod">Pembeli/Penjual membatalkan COD sepihak tanpa kabar</option>
+                        <option value="penipuan">Indikasi penipuan atau transaksi mencurigakan</option>
+                        <option value="kata_kasar">Penggunaan kata-kata kasar / pelecehan</option>
+                        <option value="barang_terlarang">Menjual barang ilegal / melanggar aturan kampus</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="kronologi">Kronologi Kejadian:</label>
+                    <textarea name="kronologi" id="kronologi" rows="4" placeholder="Jelaskan secara singkat waktu kejadian, kesepakatan awal, dan masalah yang dialami..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="bukti_foto">Upload Bukti (Screenshot Chat / Transfer / Foto Barang):</label>
+                    <input type="file" name="bukti_foto" id="bukti_foto" accept="image/png, image/jpeg, image/jpg" required>
+                    <small class="form-hint">Format yang didukung: JPG, JPEG, PNG (Maks. 2MB).</small>
+                </div>
+
+                <button type="submit" class="btn-submit-report">Kirim Laporan</button>
+            </form>
         </section>
 
         <section class="help-section">
